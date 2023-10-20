@@ -11,7 +11,10 @@ SEND_BUFFER_SIZE = 2048
 
 def client(server_ip, server_port):
     """TODO: Open socket and send message from sys.stdin"""
-    pass
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((server_ip, server_port))
+    s.sendall("Hello, world!\n")
+    s.close()
 
 
 def main():
