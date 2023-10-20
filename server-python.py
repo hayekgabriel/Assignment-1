@@ -1,7 +1,7 @@
 ###############################################################################
 # server-python.py
-# Name:
-# EID:
+# Name: Gabriel Hayek
+# EID: gah2475
 ###############################################################################
 
 import sys
@@ -12,7 +12,15 @@ QUEUE_LENGTH = 10
 
 def server(server_port):
     """TODO: Listen on socket and print received message to sys.stdout"""
-    pass
+    a = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    a.bind(('127.0.0.1', server_port))
+    a.listen(QUEUE_LENGTH)
+    conn, addr = a.accept()
+    data = conn.recv(RECV_BUFFER_SIZE)
+    sys.stdout.write(data)
+    sys.stdout.flush()
+    conn.close()
+    
 
 
 def main():
